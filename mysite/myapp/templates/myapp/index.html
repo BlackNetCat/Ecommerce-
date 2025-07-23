@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+    <h1>Index</h1>
+    <h4>
+        {% for item in items %}
+        <a href="/myapp/hello/{{item.id}}/">
+        Название : {{item.name}} | Цена : {{item.price}}  грн| Описание : {{item.description}} <br/>
+        </a>
+        {% endfor %}
+    </h4>
+</body>
+</html>
