@@ -8,7 +8,7 @@
     <h1>Index</h1>
     <h4>
         {% for item in items %}
-        <a href="/myapp/hello/{{item.id}}/">
+        <a href="{% url 'myapp:detail' item.id %}">
         Название : {{item.name}} | Цена : {{item.price}}  грн| Описание : {{item.description}} <br/>
         </a>
         {% endfor %}
