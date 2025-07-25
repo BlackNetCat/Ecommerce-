@@ -1,29 +1,32 @@
 {% extends "myapp/base.html" %}}
 {% load static %}
 {% block content %}
-<nav class="bg-white shadow-lg">
-    <div class="max-w-6xl mx-auto px-4">
-        <div class="flex justify-between">
-            <div class="flex space-x-7">
-                <div>
-                    <a href="#" class="flex items-center px-2 py-4">
-                    <img class="h-8 w-8" src="{% static 'myapp/images/shopping.png' %}" alt="logo"/>
-                    <span class="text-gray-500 text-3xl">Ultra Shop</span></a>
-                </div>
-                <div class="items-center flex space-x-1">
-                    <a href="#" class="py-4 px-2 text-gray-500 border-b-4 border-green-500">Home</a>
-                    <a href="#" class="py-4 px-2 text-gray-500">About</a>
-                    <a href="#" class="py-4 px-2 text-gray-500">Contacts</a>
-                </div>
-            </div>
-        </div>
+
+<main class="mt-10 mx-auto max-w-7xl px-4 sm:mt-12 sm:px-6 md:mt-16 lg:px-8 xl:mt-28">
+    <div class="sm:text-center lg:text-left">
+        <h1 class="text-4xl font-bold text-gray-400 sm:text-5xl md:text-6xl">
+            <span class="block xl:inline">Эксклюзивные товары по супер ценам:</span>
+        </h1>
     </div>
-</nav>
-<h4>
+    <div class="p-10 grid grid-cols-1 sm:grid-cols-1 md:grid-cols-3 xl:grid-col-3 lg-grid-col-3 gap-3">
     {% for item in items %}
     <a href="{% url 'myapp:detail' item.id %}">
-    Название : {{item.name}} | Цена : {{item.price}}  грн| Описание : {{item.description}} <br/>
+        <div class=" rounded overflow-hidden shadow-lg">
+            {% if item.image and item.image.name %}
+            <img class="w-auto h-[400px]" src="{{item.image.url}}" alt="">
+            {% else %}
+            <p>Изображение не прикреплено</p>
+            {% endif%}
+            <div class="px-6 py-4">
+                <p class="font-bold text-xl mb-2"> {{item.name}} </p>
+                <p class="font-bold text-xl text-green-500 mb-2"> {{item.price}} UAH </p>
+                <p class="text-gray-700 text-base">{{item.description}}</p>
+            </div>
+        </div>
     </a>
     {% endfor %}
-</h4>
+    </div>
+</main>
+
+
  {% endblock content %}
